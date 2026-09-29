@@ -23,7 +23,6 @@ Training stays on the HPC3 H100 and A100 queues. The simulator stays on a ray-tr
 - A logged success rate of 0% on the pretrained checkpoint is a pass. The scoreboard existing is the milestone.
 - The five-episode overfit is a smoke test. It proves LeRobot can train. Those weights are not the policy we deploy and not the semester baseline.
 - The 21,500-episode BenchHub kitchen suite is optional later. Semester 1 is one arm, one pick task.
-- HPC home is nearly full. `/scratch` and `/data` are not writable. Dataset downloads stay off `$HOME`.
 
 [Also, note: I met with our advisor, and she is providing us with RTX 4090, so we can do our simulations there, RunPod is something Im trying out instead of sitting idle and waiting for access]
 
