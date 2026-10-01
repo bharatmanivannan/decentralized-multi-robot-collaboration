@@ -1,0 +1,25 @@
+Meeting Type: Team-Only
+Date: 2026-08-28
+Start–End Time: 4-5 PM
+Location/Mode: Google Meet
+Attendees:
+- Bharat Manivannan
+- Ritwik Reddy
+- Kanaka Sarat
+- Snehil Raut
+1) Accomplished Since Last Meeting
+- All team members read the project proposal and associated papers.
+- All team members researched the project topics to better understand the problem and our proposed solution.
+2) Accomplished During This Meeting
+- The team discussed each other's understanding of the project and helped clarify any questions that were raised.
+- The project abstract and PowerPoint were planned out, and tasks were delegated.
+3) Issues / Blockers
+- No issues
+4) Action Items
+- Action: Complete Project Abstract and PowerPoint | Owner: All | Due: 2026-09-03
+- Action: Final review of Project Abstract and submit | Owner: Ritwik | Due: 2026-09-03
+- Action: Final review of Project PowerPoint and submit | Owner: Kanaka | Due: 2026-09-03
+- Action: Create GitHub repo and add collaborators | Owner: Bharat | Due: 2026-09-03
+5) Plans / Goals for Next Meeting
+- Each team member will research further on different VLMs, datasets, and simulation environments.
+- Compare/Contrast findings with SmolVLM, LeRobot, and Isaac Lab.

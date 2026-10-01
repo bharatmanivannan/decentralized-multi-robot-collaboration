@@ -1,0 +1,26 @@
+Meeting Type: Team-Only
+Date: 2026-09-04
+Start–End Time: 2:15-3 PM
+Location/Mode: Google Meet
+Attendees:
+- Bharat Manivannan
+- Ritwik Reddy
+- Kanaka Sarat
+- Snehil Raut
+1) Accomplished Since Last Meeting
+- All team members worked on completing and submitting the Project Abstract and PowerPoint.
+- All team members researched and noted their findings on different VLA models available, how to integrate them with Isaac Lab, and the usage of the LeRobot dataset.
+2) Accomplished During This Meeting
+- The team practiced presenting and introducing our project to the class.
+- Then our findings on the project technologies and models were discussed. Based on the findings, we concluded that SmolVLM, LeRobot, and Isaac Lab would be our VLA model, dataset, and test environment respectively.
+3) Issues / Blockers
+- Possible HPC access needed
+4) Action Items
+- Action: Research further on implementing SmolVLA | Owner: Ritwik | Due: 2026-09-11
+- Action: Research further on LeRobot dataset | Owner: Bharat | Due: 2026-09-11
+- Action: Research further on Isaac Lab simulation environment | Owner: Snehil | Due: 2026-09-11
+- Action: Research on HPC access and schedule meeting with advisor | Owner: Kanaka | Due: 2026-09-11
+
+5) Plans / Goals for Next Meeting
+- Each team member will research further on SmolVLM, LeRobot, and Isaac Lab and how to implement them.
+- Findings will be discussed in the next meeting.

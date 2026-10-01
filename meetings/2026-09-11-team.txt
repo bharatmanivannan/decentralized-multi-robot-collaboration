@@ -1,0 +1,24 @@
+Meeting Type: Team-Only
+Date: 2026-09-11
+Start–End Time: 5-6 PM
+Location/Mode: Google Meet
+Attendees:
+- Bharat Manivannan
+- Ritwik Reddy
+- Kanaka Sarat
+- Snehil Raut
+1) Accomplished Since Last Meeting
+- Each team member conducted detailed research into their assigned topic and prepared notes to present during this meeting.
+2) Accomplished During This Meeting
+- Isaac Lab was identified to only run on Windows 64-bit systems.
+- HPC usage and its pros/cons were discussed.
+- Workbook 1 deliverables were discussed and planned. 
+3) Issues / Blockers
+- None
+4) Action Items
+- Action: Find literature papers and sources | Owner: All | Due: 2026-09-19
+- Action: Start working on Workbook 1 deliverables | Owner: All | Due: 2026-09-19
+
+5) Plans / Goals for Next Meeting
+- Each team member will research papers or sources that we can use for the literature search part of the assignment.
+- Each team member will shortlist papers that can be used in Workbook 1 and share with the team.

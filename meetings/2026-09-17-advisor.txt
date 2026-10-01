@@ -1,0 +1,26 @@
+Meeting Type: Advisor
+Date: 2026-09-17
+Start–End Time: 10-10:25 AM
+Location/Mode: In-Person
+Attendees:
+- Dr. Wencen Wu
+- Bharat Manivannan
+1) Accomplished Since Last Meeting
+- This was the first formal meeting with Dr. Wu. 
+- The goal of this meeting was to discuss the general overview of our project idea and next steps.
+2) Accomplished During This Meeting
+- The project and semester plan were discussed with Dr. Wu. 
+- Our team's goals and final outcome were also discussed.
+- Dr. Wu helped brainstorm different simulations that we can use to determine a successful VLA setup.
+- Dr. Wu informed us to research multiple sources for the literature portion of Workbook 1.
+- The usage of the HPC was also discussed. Dr. Wu expressed that all simulations may not run properly on the HPC.
+- Dr. Wu mentioned she has a local computer with a dedicated GPU that we can possibly use if HPC gives us issues.
+3) Issues / Blockers
+- None
+4) Action Items
+- Action: Continue working on Workbook 1 | Owner: All | Due: 2026-10-01
+- Action: Ensure that a singular simulation can be set up on HPC | Owner: All | Due: 2026-09-24
+
+5) Plans / Goals for Next Meeting
+- Each team member will continue to work on Workbook 1 to ensure timely completion.
+- The team will work on getting a singular simulation running on the HPC.

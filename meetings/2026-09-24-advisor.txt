@@ -1,0 +1,26 @@
+Meeting Type: Advisor
+Date: 2026-09-24
+Start–End Time: 12-12:30 PM
+Location/Mode: In-Person
+Attendees:
+- Dr. Wencen Wu
+- Ritwik Reddy
+1) Accomplished Since Last Meeting
+- The team developed a two-semester project plan covering single-agent VLA fine-tuning this semester and decentralized multi-robot collaboration in the final semester.
+- The team identified SmolVLA and the SO-101 robot arm as the primary model and platform for the first phase of the project.
+2) Accomplished During This Meeting
+- Ritwik presented the proposed project timeline and scope to Dr. Wu. For this semester, the team plans to fine-tune SmolVLA for the SO-101 robot arm using supervised imitation learning in simulation, with reinforcement learning fine-tuning considered if time and results allow.
+- The final-semester plan was discussed, including studying the CHORUS framework and deploying the fine-tuned VLA across two SO-101 robot arms to evaluate decentralized collaboration without explicit communication.
+- Dr. Wu approved the proposed project direction and noted that related research exists and the work may have potential for publication.
+- Compute resources were discussed. Ritwik completed the required lab access form for Dr. Wu's RTX 5090 workstation, which will be used for Isaac Sim.
+3) Issues / Blockers
+- Access to the RTX 5090 workstation was still being finalized at the time of the meeting.
+- The workstation is shared with other teams, so a usage schedule will need to be coordinated with Dr. Wu.
+- Reinforcement learning fine-tuning will depend on available time, initial imitation-learning results, and any technical bottlenecks encountered.
+4) Action Items
+- Action: Confirm RTX 5090 lab access and coordinate a workstation usage schedule with Dr. Wu | Owner: Ritwik | Due: 2026-10-01
+- Action: Set up Isaac Sim on the RTX 5090 workstation and begin simulation work | Owner: Ritwik | Due: 2026-10-01
+- Action: Use the HPC3 H100 and A100 queues for model training runs as previously approved by Dr. Wu | Owner: All | Due: Ongoing
+5) Plans / Goals for Next Meeting
+- Begin the Isaac Sim environment setup and simulation work for the SO-101 robot arm.
+- Report progress on the simulation environment, compute access, and initial implementation work.

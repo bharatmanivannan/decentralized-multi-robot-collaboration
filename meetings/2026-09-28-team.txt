@@ -1,0 +1,27 @@
+Meeting Type: Team-Only
+Date: 2026-09-28
+Start–End Time: 5-6 PM
+Location/Mode: Google Meet
+Attendees:
+- Bharat Manivannan
+- Ritwik Reddy
+- Kanaka Sarat
+- Snehil Raut
+1) Accomplished Since Last Meeting
+- Each team member has been working on their part of Workbook 1.
+- A singular simulation has been set up and run on the HPC, proving that Isaac Lab is working.
+- Permission to use Dr. Wu's personal GPU system was obtained.
+2) Accomplished During This Meeting
+- This meeting was used as a checkpoint where the team could go over Workbook 1 progress. 
+- Each team member discussed their portion of the workbook and brainstormed areas for improvement.
+3) Issues / Blockers
+- None
+4) Action Items
+- Action: Workbook 1 Chapters 1 & 2 | Owner: Bharat | Due: 2026-10-01
+- Action: Workbook 1 Chapters 3 & 4 | Owner: Ritwik | Due: 2026-10-01
+- Action: Workbook 1 Chapters 5 & 6 | Owner: Snehil | Due: 2026-10-01
+- Action: Workbook 1 Chapters 7 & 8 | Owner: Kanaka | Due: 2026-10-01
+
+5) Plans / Goals for Next Meeting
+- Each team member will research on papers or sources, that we can use for our literature search part of the assignment.
+- Each team member will shortlist papers that can be used in Workbook 1 and share with the team.
