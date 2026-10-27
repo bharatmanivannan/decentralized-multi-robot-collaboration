@@ -3,7 +3,7 @@
 Project: Decentralized Multi-Robot Collaboration (CMPE 295A)
 Advisor: Dr. Wencen Wu
 Written: 2026-09-24
-This is the working plan.
+Updated plan and dates: `project_phases.md`. This file is the original task split.
 
 Semester 1 is one simulated SO-101 arm, driven by SmolVLA, that can see an object, center on it, and pick it up, with a measured success rate. Semester 2 copies that same brain onto a second arm and cuts communication. Everything is simulation. That is the big picture, need everyone to read the CHORUS Framework (Multi-Robot Collaboration) that will be challenging task for us, anyway we will focus on that at the end of the semester.
 

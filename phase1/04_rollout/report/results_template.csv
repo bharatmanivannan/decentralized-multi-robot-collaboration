@@ -1,0 +1,2 @@
+run_id,baseline,episode,seed,oranges_placed,episode_success,termination_reason,duration_s,policy_action_horizon,checkpoint,language_instruction,camera_map,isaac_sim_version,isaac_lab_version,leisaac_commit,lerobot_version,driver_version,gpu,notes
+example-row,B1-smolvla-zeroshot,1,1000,0,False,time_out,120.0,16,lerobot/smolvla_base,Grab orange and place into plate,front->camera1;wrist->camera2,4.5.0,v2.1.1,TBD,TBD,TBD,A40,template row - replace with real runs

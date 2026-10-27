@@ -1,1 +1,27 @@
 .DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+*.egg-info/
+
+# Secrets. Never commit NGC / HF / RunPod credentials.
+.env
+.env.*
+*.pem
+*.key
+
+# Large artifacts. Raw datasets, weights and rollout video stay out of git.
+# Small stills, logs, CSVs and reports under phase*/ are committed on purpose.
+data/
+checkpoints/
+wandb/
+*.mp4
+*.safetensors
+*.ckpt
+*.pt
+*.pth
