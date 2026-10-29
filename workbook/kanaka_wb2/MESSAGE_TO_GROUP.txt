@@ -1,0 +1,26 @@
+Hey team —
+
+Workbook 2 is due Thu by 8am (Canvas PDF, research template). I finished my lane and pushed it here:
+
+Branch: feature/kanaka_workbook2
+https://github.com/bharatmanivannan/decentralized-multi-robot-collaboration/tree/feature/kanaka_workbook2
+
+Files to grab:
+1) workbook/kanaka_wb2/Kanaka_Workbook2_Contribution.pdf  ← paste from this
+2) workbook/kanaka_wb2/Kanaka_Workbook2_Contribution.docx  ← editable
+
+What I covered (my part):
+- Ch 3–5: sync notes only (no rewrite). Contract test is DONE as of Oct 26.
+- Ch 6 Evaluation Methodology — filled, with what we already ran
+- Ch 7 System Design — filled the missing loop + reproduction steps (eval wrapper side)
+- Ch 8 Implementation Plan & Progress — updates in BOLD vs Workbook 1
+- Ch 9 Project Schedule — updates in BOLD + Gantt + PERT for BOTH semesters (295A + 295B)
+
+Still needed from you before we submit the merged PDF:
+- Ritwik: A40 pod status / first rollout note (if anything landed after Oct 26 lab log)
+- Snehil: confirm policy-server path wording in Ch 7 if you want anything added
+- Bharat: merge into the full workbook PDF and submit for the group
+
+I did NOT rewrite Ch 1–2. Keep Workbook 1 text there.
+
+— Kanaka
