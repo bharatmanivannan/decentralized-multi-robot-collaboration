@@ -1,21 +1,21 @@
 # Phase 1
 
-Ritwik. Updated 26 Oct 2026.
+Ritwik. Updated 18 Nov 2026.
 
-This is the current work. Get the dataset, the model and the simulator talking the same
-language, then run one rollout with the pretrained checkpoint.
-
-Phases 2 and 3 start in November. Details are in [`../project_phases.md`](../project_phases.md).
+Dataset, model, simulator, and the first rollout. The later steps, fine-tune then
+rescore, are in [`../project_phases.md`](../project_phases.md).
 
 | Track | GPU? | Status |
 |---|---|---|
 | [01 dataset](01_dataset_exploration/report/dataset_report.md) | No | Done |
 | [02 model](02_model_exploration/report/contract_test_report.md) | No | Done |
-| [03 simulator](03_sim_setup/RUNBOOK.md) | Yes | Waiting on a RunPod A40 |
-| [04 one rollout](04_rollout/RUNBOOK.md) | Yes | After the simulator is up |
+| [03 simulator](03_sim_setup/RUNBOOK.md) | Yes | Done, on the lab RTX 4090 |
+| [04 rollout and baseline](04_rollout/report/rollout_results.csv) | Yes | Done. Pretrained and random are both 0/3 |
 
-I did the dataset and the model first because both run on a laptop. The two remaining
-tracks need the pod.
+I did the dataset and the model on the laptop. The simulator and the rollouts are on
+Dr. Wu's RTX 4090. Isaac Sim 5.1.0, Isaac Lab 0.47.2, LeIsaac 0.4.0, LeRobot 0.4.2.
+The old runbooks still say RunPod and Isaac 4.5. That plan changed once this machine
+was available.
 
 ---
 
@@ -30,8 +30,8 @@ These came out of tracks 1 and 2. Tracks 3 and 4 use them as is.
 | Joint order | shoulder pan, shoulder lift, elbow flex, wrist flex, wrist roll, gripper |
 | Action horizon | 16 for the first rollout. Sweep 1 to 50 later. The model returns at most 50. |
 | Scene | `LeIsaac-SO101-PickOrange-Direct-v0` |
-| Episode length | 120 s at 30 Hz |
-| Simulator | Isaac Sim 4.5.0, headless, cameras saved to disk |
+| Episode length | 60 s at 60 Hz for the baseline |
+| Simulator | Isaac Sim 5.1.0 on the lab RTX 4090. Viewport to look, headless to score. |
 
 ## Dataset
 
@@ -71,15 +71,22 @@ Full writeup: [model report](02_model_exploration/report/contract_test_report.md
 
 ## Simulator and rollout
 
-Both have a runbook with the commands ready. Plan is:
+The scene is `LeIsaac-SO101-PickOrange-Direct-v0`. I loaded it in the viewport first
+so I could see the arm, the three oranges, and the plate. Scoring was headless, because
+the viewport is too slow for a full episode.
 
-1. Bring up a RunPod A40 with Isaac Sim 4.5.0.
-2. Install Isaac Lab v2.1.1 and LeIsaac.
-3. Load the pick-orange scene, headless, and save a front frame and a wrist frame.
-4. Run one rollout with the pretrained checkpoint and write down the success rate.
+The eval script is LeIsaac's `scripts/evaluation/policy_inference.py`. Pretrained
+SmolVLA talks to `start_policy_server.py`. Random actions are `--policy_type=random`.
 
-I am running the sim headless and saving camera frames to disk. We do not need a live
-viewport for this.
+Three episodes each, seed 1000, 60 seconds, horizon 16.
+
+| Policy | Episode success | Oranges in the plate |
+|---|---|---|
+| `lerobot/smolvla_base` | 0/3 | 0, 0, 0 |
+| random joints | 0/3 | 0, 0, 0 |
+
+The rows are in [rollout_results.csv](04_rollout/report/rollout_results.csv). Zero is
+the floor. The fine-tune has to beat it.
 
 ## Rerunning the laptop tracks
 

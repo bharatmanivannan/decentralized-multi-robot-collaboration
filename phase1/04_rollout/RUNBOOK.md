@@ -1,11 +1,11 @@
 # Track 4 — One rollout
 
-Ritwik. Status: after track 3.
+Ritwik. Updated 18 Nov 2026. Status: done on the lab RTX 4090.
 
-Close the loop once with the pretrained checkpoint. Arm moves, action is six numbers,
-both cameras save to disk, and we write down a success rate.
-
-Needs [`../03_sim_setup/RUNBOOK.md`](../03_sim_setup/RUNBOOK.md) done first.
+The pretrained checkpoint and a random policy both scored 0/3. Rows are in
+[report/rollout_results.csv](report/rollout_results.csv). The commands below are the
+original RunPod notes. The run that actually finished was headless Isaac Sim 5.1,
+`scripts/evaluation/policy_inference.py`, seed 1000, 60 s, horizon 16.
 
 ## Settings from tracks 1 and 2
 
@@ -53,9 +53,3 @@ A few frames from each camera per episode, into `report/`. One row per episode i
 `report/rollout_results.csv`, using the columns in `report/results_template.csv`.
 Fill in the version fields. Horizon sweep and pooled numbers are phase 2.
 
-## Done when
-
-- the arm moves
-- the action is six numbers in our joint order
-- front and wrist frames are in `report/` at 480×640
-- a per-episode success rate is written down, with seed and versions

@@ -1,9 +1,11 @@
-# Track 3 — Simulator setup on a RunPod A40
+# Track 3 — Simulator setup
 
-Ritwik. Status: waiting on a pod.
+Ritwik. Updated 18 Nov 2026. Status: done on the lab RTX 4090.
 
-Goal: Isaac Sim 4.5.0, Isaac Lab v2.1.1 and LeIsaac on a RunPod A40, with the SO-101
-loaded in the pick-orange scene and both cameras rendering to disk.
+Isaac Sim 5.1.0, Isaac Lab 0.47.2, and LeIsaac 0.4.0 are installed in the `leisaac`
+conda env. The pick-orange scene loads, and the arm is visible in the viewport.
+The notes below are the old RunPod A40 plan. I did not use them. Versions and the
+`nvidia-smi` reading are in `Lab_log.md`.
 
 ---
 
@@ -84,12 +86,4 @@ the repo.
    into `report/` at 480×640, keys `observation.images.front` and
    `observation.images.wrist`.
 
-## Done when
-
-- `nvidia-smi` is in `Lab_log.md`
-- the four imports in step 3 work
-- LeRobot version is written down
-- SO-101 is loaded in `LeIsaac-SO101-PickOrange-v0`
-- a front frame and a wrist frame are in `report/`
-
-Then [`../04_rollout/RUNBOOK.md`](../04_rollout/RUNBOOK.md).
+The rollout is in [`../04_rollout/RUNBOOK.md`](../04_rollout/RUNBOOK.md).
