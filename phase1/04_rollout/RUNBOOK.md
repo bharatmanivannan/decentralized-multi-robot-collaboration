@@ -1,6 +1,6 @@
 # Track 4 — One rollout
 
-Ritwik. Status: after track 3.
+Ritwik. Status: done on 18 Nov 2026. Pretrained SmolVLA, five episodes, seed 1000, horizon 16, score 0/5. Table is `report/rollout_results.csv`. The command that actually ran is `run_pretrained_rollout.py` on port 8080, not the stock script on port 5555.
 
 Close the loop once with the pretrained checkpoint. Arm moves, action is six numbers,
 both cameras save to disk, and we write down a success rate.

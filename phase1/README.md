@@ -1,21 +1,23 @@
 # Phase 1
 
-Ritwik. Updated 26 Oct 2026.
+Ritwik. Updated 18 Nov 2026.
 
-This is the current work. Get the dataset, the model and the simulator talking the same
-language, then run one rollout with the pretrained checkpoint.
+Dataset, model, simulator, and one pretrained rollout. The first three tracks were
+already done on my laptop. On 18 Nov I ran the last two on a RunPod A40.
 
-Phases 2 and 3 start in November. Details are in [`../project_phases.md`](../project_phases.md).
+Phases 2 and 3 are the eval script and the fine-tune. Details are in
+[`../project_phases.md`](../project_phases.md).
 
 | Track | GPU? | Status |
 |---|---|---|
-| [01 dataset](01_dataset_exploration/report/dataset_report.md) | No | Done |
-| [02 model](02_model_exploration/report/contract_test_report.md) | No | Done |
-| [03 simulator](03_sim_setup/RUNBOOK.md) | Yes | Waiting on a RunPod A40 |
-| [04 one rollout](04_rollout/RUNBOOK.md) | Yes | After the simulator is up |
+| [01 dataset](01_dataset_exploration/report/dataset_report.md) | No | Done, on my laptop |
+| [02 model](02_model_exploration/report/contract_test_report.md) | No | Done, on my laptop |
+| [03 simulator](03_sim_setup/RUNBOOK.md) | Yes | Done, headless frames on the pod |
+| [04 one rollout](04_rollout/RUNBOOK.md) | Yes | Done. Pretrained SmolVLA, 0/5 |
 
-I did the dataset and the model first because both run on a laptop. The two remaining
-tracks need the pod.
+`feature/ritwik_workflow` does not have this pod run. I left that branch as it was so
+I can pull it on the campus RTX 4090 and keep going there. This writeup is on
+`feature/baselinework_runpod`.
 
 ---
 
@@ -69,17 +71,79 @@ frame is in the tens of degrees. That is the starting point before fine-tuning.
 
 Full writeup: [model report](02_model_exploration/report/contract_test_report.md)
 
-## Simulator and rollout
+## What I ran on the pod
 
-Both have a runbook with the commands ready. Plan is:
+The pod was a plain Ubuntu 22.04 A40, not the NGC Isaac image. Driver `570.211.01`,
+`nvidia-smi` CUDA 12.8, 46 GB of GPU memory. There is no Docker inside the pod, so I
+installed Isaac Sim 4.5.0 from NVIDIA's pip index. No NGC key. Isaac Lab is v2.1.1.
+LeIsaac is commit `493f91c`, the last commit that still documents Isaac 4.5. Current
+LeIsaac wants Isaac 5.1, so I did not use that.
 
-1. Bring up a RunPod A40 with Isaac Sim 4.5.0.
-2. Install Isaac Lab v2.1.1 and LeIsaac.
-3. Load the pick-orange scene, headless, and save a front frame and a wrist frame.
-4. Run one rollout with the pretrained checkpoint and write down the success rate.
+Isaac Lab's installer replaced the PyTorch I had pinned and left `torch 2.7.0+cu128`.
+That is what the simulator actually ran. The laptop model check is still LeRobot
+0.6.1. The policy server on the pod is LeRobot 0.3.3, which is the version LeIsaac's
+client was generated against. Those two do not share a virtualenv.
 
-I am running the sim headless and saving camera frames to disk. We do not need a live
-viewport for this.
+### Simulator
+
+Headless, cameras to disk. I loaded `LeIsaac-SO101-PickOrange-v0`, stepped it, and
+saved one front frame and one wrist frame.
+
+![Front camera, pick-orange scene](03_sim_setup/report/front.png)
+
+*Front camera. The SO-101, the plate, and three oranges are in the frame.*
+
+![Wrist camera, pick-orange scene](03_sim_setup/report/wrist.png)
+
+*Wrist camera. The gripper is in frame, so this camera is rendering too.*
+
+I did not get a live WebRTC picture. The client wants TCP `49100` and UDP `47998`.
+This pod publishes those as public TCP `22077` and UDP `22078`, and Isaac 4.5 cannot
+advertise the public ports. The viewer is still pending. The frames above are the
+proof that the scene rendered.
+
+### Rollout
+
+Five episodes, seed 1000, horizon 16, 120 seconds each, instruction
+`Grab orange and place into plate`. Scene `LeIsaac-SO101-PickOrange-Direct-v0`.
+Cameras go out as `camera1` and `camera2`. I left `camera3` out.
+
+The current `lerobot/smolvla_base` files on the Hub no longer carry the normalization
+stats in the place LeRobot 0.3.3 loads. A first attempt returned an all-zero action
+because those buffers were still infinity. I reloaded the 24 Jun 2025 revision of the
+same checkpoint, which still has the pooled SO-100 stats, and kept the camera names
+from the current config. After that the first action was six real joint targets, not
+zeros.
+
+| Episode | Oranges placed | Success | Why it ended |
+|---|---|---|---|
+| 1 | 0 | no | time out, 120 s |
+| 2 | 0 | no | time out, 120 s |
+| 3 | 0 | no | time out, 120 s |
+| 4 | 0 | no | time out, 120 s |
+| 5 | 0 | no | time out, 120 s |
+
+**0/5.** The arm moved. Nothing landed on the plate. That is the pretrained baseline,
+before any fine-tune. The table is
+[rollout_results.csv](04_rollout/report/rollout_results.csv).
+
+![Episode 1, front camera at the start](04_rollout/report/frames/pretrained/episode_01/front_start.png)
+
+*Episode 1, front camera at the start. Middle and end frames are next to it in
+`04_rollout/report/frames/pretrained/episode_01/`.*
+
+I started a random-action pass and stopped it. Random joint targets made the physics
+step crawl, and I did not get a finished episode, so there is no random baseline yet.
+
+## What is not done
+
+- WebRTC. No one has seen a live picture from this pod.
+- The eval script: more seeds, per-orange rate, 95% confidence interval.
+- Fine-tuning. That stays on the HPC H100 or A100, then the same eval scores the new
+  checkpoint.
+- The campus RTX 4090 (`10.31.82.76`) can run this stack, but Isaac is not installed
+  there. The machine my professor wrote down, `10.31.82.102`, is a different computer.
+  I have not logged into it.
 
 ## Rerunning the laptop tracks
 

@@ -7,10 +7,10 @@ on a plate. Later we copy the same policy onto a second arm. Everything is in si
 
 ## Where to start
 
-- [Phase 1](phase1/README.md) — current work. Dataset and model are done. Simulator and the
-  first rollout are next, once a RunPod A40 is available.
-- [Phases](project_phases.md) — what comes after this: evaluation in November, then
-  fine-tuning on HPC.
+- [Phase 1](phase1/README.md) — dataset, model, simulator, and the first pretrained
+  rollout are done. On a RunPod A40 the untouched SmolVLA checkpoint scored 0/5.
+  Evaluation is next.
+- [Phases](project_phases.md) — evaluation script, then fine-tuning on HPC.
 - [Lab log](Lab_log.md) — machines, versions, and the dated decisions.
 - [Workbook 1](workbook/Multi-Robot%20Collaboration%20Project%20Workbook.pdf)
 

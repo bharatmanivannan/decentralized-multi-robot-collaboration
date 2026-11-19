@@ -1,6 +1,6 @@
 # Project phases
 
-Ritwik. Updated 26 Oct 2026.
+Ritwik. Updated 18 Nov 2026.
 
 Phase 1 is the current work. Phases 2 and 3 run through November. Ownership is in
 `team_workflow.md`. Machines and dated decisions are in `Lab_log.md`.
@@ -13,15 +13,17 @@ Dataset, model, simulator, first rollout.
 
 | # | Track | GPU? | Status |
 |---|---|---|---|
-| 1 | Dataset exploration | No | Done |
-| 2 | Model, one frame → six numbers | No | Done |
-| 3 | RunPod A40, Isaac Sim 4.5, Isaac Lab, LeIsaac | Yes | Waiting on a pod |
-| 4 | One rollout with the pretrained checkpoint | Yes | After track 3 |
+| 1 | Dataset exploration | No | Done on my laptop |
+| 2 | Model, one frame → six numbers | No | Done on my laptop |
+| 3 | RunPod A40, Isaac Sim 4.5, Isaac Lab, LeIsaac | Yes | Done, 18 Nov. Headless frames saved |
+| 4 | One rollout with the pretrained checkpoint | Yes | Done, 18 Nov. 0/5, all timeouts |
 
 Tracks 1 and 2 are in `phase1/`. Tracks 3 and 4 have runbooks ready.
 
-Done when the arm moves in the scene, both cameras save to disk, and we have a first
-success rate from the pretrained checkpoint.
+Phase 1 is done. The arm moved, both cameras saved to disk, and the pretrained
+checkpoint scored 0/5. Writeup is in `phase1/README.md`. The pod branch is
+`feature/baselinework_runpod`. `feature/ritwik_workflow` is unchanged, so the campus
+4090 can pull that and start from the October plan.
 
 ## Phase 2 — first two weeks of November
 
@@ -77,8 +79,12 @@ after the imitation-learning numbers are in. Demo to Dr. Wu on 4 December.
 | Action horizon | 16 first, then sweep 1 to 50 |
 | Metric | per-orange success rate |
 
-## Next on the pod
+## What is left
 
-The LeRobot version used with Isaac. Tracks 1 and 2 used `0.6.1` on the laptop. On the
-pod we install whatever LeIsaac imports, write it in the lab log, and use that same
-version for training and evaluation.
+1. Eval script. Same scene, more seeds, per-orange success, 95% confidence interval,
+   and the horizon sweep from 1 to 50. A finished random-action run is still missing.
+2. Fine-tune on HPC3, H100 or A100, on all 60 episodes. Then score that checkpoint
+   with the eval script, same seeds as this 0/5 run.
+3. WebRTC, only if we want a live view. It is not required for the numbers. Isaac 4.5
+   on this pod cannot advertise the public UDP port, so the stock client stays black
+   until the client machine rewrites `49100` and `47998` onto the pod's published ports.

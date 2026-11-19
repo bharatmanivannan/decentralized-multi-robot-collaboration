@@ -1,6 +1,6 @@
 # Track 3 — Simulator setup on a RunPod A40
 
-Ritwik. Status: waiting on a pod.
+Ritwik. Status: done on 18 Nov 2026. Frames are in `report/`. The pod was a plain Ubuntu image, Isaac Sim 4.5.0 from pip, not the NGC container. Details are in `../README.md` and `../../Lab_log.md`.
 
 Goal: Isaac Sim 4.5.0, Isaac Lab v2.1.1 and LeIsaac on a RunPod A40, with the SO-101
 loaded in the pick-orange scene and both cameras rendering to disk.
