@@ -3,7 +3,7 @@
 Project: Decentralized Multi-Robot Collaboration (CMPE 295A)
 Advisor: Dr. Wencen Wu
 Owner: Ritwik
-Updated: 2026-10-26
+Updated: 2026-11-18
 
 Dated record of what we tried, what we decided, and where the machines are. Current task split is in `team_workflow.md`. Phase plan and dates are in `project_phases.md`.
 
@@ -39,6 +39,41 @@ are next, once a pod is free. Both have runbooks.
 - LeRobot version on the pod: tracks 1 and 2 used `0.6.1` on the laptop. On the pod, install
   whatever LeIsaac imports, write it here, use that same version for training and evaluation.
 - NGC key: rotate before the RunPod image pull. The September key was pasted into a chat.
+
+## RTX 4090 lab workstation — versions (Nov 18)
+
+This is Dr. Wu's on-campus RTX 4090 workstation, the machine from the Sep 29 decision.
+
+```
+nvidia-smi: Driver 580.178.04, CUDA 13.0
+GPU: NVIDIA GeForce RTX 4090, 24564 MB
+CPU: AMD Ryzen 9 7950X3D 16-Core, 64 GB RAM
+OS: Ubuntu 24.04.4 LTS, Kernel 7.0.0-43-generic
+```
+
+| Package | Version | Notes |
+|---|---|---|
+| IsaacSim | 5.1.0.0 | pip install, not Docker |
+| IsaacLab | 0.47.2 (v2.3.0) | from LeIsaac submodule |
+| LeIsaac | 0.4.0 | from source |
+| LeRobot | 0.4.2 | what LeIsaac imports, replaces 0.6.1 from the Mac |
+| PyTorch | 2.7.0+cu128 | |
+| TorchVision | 0.22.0+cu128 | |
+| TorchAudio | 2.7.0+cu128 | |
+| NumPy | 1.26.0 | |
+| Transformers | 5.23.0 | |
+| Python | 3.11 | conda env `leisaac` |
+| SmolVLA | lerobot/smolvla_base | 450M, downloaded locally |
+| Dataset | LightwheelAI/leisaac-pick-orange | 60 episodes, downloaded locally |
+
+**Version change from the Mac:** LeRobot 0.4.2 here (what LeIsaac 0.4.0 requires) vs
+0.6.1 on the laptop. Training on HPC must use the same LeRobot version as this
+workstation. The contract test (phase 1 track 2) was run on 0.6.1 and the API may
+differ slightly; the SmolVLA checkpoint is the same.
+
+**Isaac Sim change:** 5.1.0 here vs the 4.5.0 planned in the runbook. Driver 580
+supports 5.x. LeIsaac 0.4.0 targets 5.1.0 + Isaac Lab v2.3.0. The 4.5.0 runbook
+steps do not apply to this setup.
 
 ## What we tried
 
@@ -96,6 +131,30 @@ decisions table.
 - Do not pass `primaryStream/publicIp` or `publicEndpointAddress` on this 4.5 image.
 - Do not run a placeholder `python.sh` with `path/to/your/headless_script.py`. The streaming app is `./runheadless.sh` inside the container.
 - Do not put NGC API keys, passwords, or tokens in the repo. The key used for the image pull was pasted into an earlier chat. Rotate it in NGC.
+
+## RTX 4090 first rollout and baseline (Nov 18 night)
+
+The scene loads in the native Isaac Sim 5.1 viewport on this machine. Headless
+evaluation is what we use for numbers. Viewport rendering is too slow for batch runs.
+
+Success for an episode is LeIsaac's `task_done`: all three oranges inside the plate
+window and the arm back at rest. `oranges_placed` is the count of oranges whose XY
+is within 10 cm of the plate, which is the per-orange piece of that check.
+
+| Baseline | Episodes | Seed | Length | Horizon | Episode success | Oranges placed |
+|---|---|---|---|---|---|---|
+| Pretrained `lerobot/smolvla_base` | 3 | 1000 | 60 s at 60 Hz | 16 | 0/3 | 0, 0, 0 |
+| Random joint targets | 3 | 1000 | 60 s at 60 Hz | 16 | 0/3 | 0, 0, 0 |
+
+A shorter smoke run (one 30 s pretrained episode) also timed out at 0/1. Both floors
+are 0%. That is the score the HPC fine-tune has to beat. Rows are in
+`phase1/04_rollout/report/rollout_results.csv`.
+
+Policy inference runs headless against a local gRPC policy server
+(`start_policy_server.py`, lerobot 0.4.2 async inference). LeIsaac 0.4.0's client
+was written for lerobot 0.3.3, so the client now sends cameras as `camera1`/`camera2`
+and sets `must_go` so the server does not drop near-zero pretrained actions as
+"too similar".
 
 ## Next, on the RunPod A40
 
