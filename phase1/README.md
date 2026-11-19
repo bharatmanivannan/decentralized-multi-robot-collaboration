@@ -2,8 +2,9 @@
 
 Ritwik. Updated 18 Nov 2026.
 
-Dataset, model, simulator, and one pretrained rollout. The first three tracks were
-already done on my laptop. On 18 Nov I ran the last two on a RunPod A40.
+Dataset, model, simulator, and one pretrained rollout. The dataset and the model
+were already done on my laptop. On 18 Nov I ran the simulator and the rollout on a
+RunPod A40.
 
 Phases 2 and 3 are the eval script and the fine-tune. Details are in
 [`../project_phases.md`](../project_phases.md).
