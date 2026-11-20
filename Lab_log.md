@@ -5,7 +5,7 @@ Advisor: Dr. Wencen Wu
 Owner: Ritwik
 Updated: 2026-11-18
 
-Dated record of what we tried, what we decided, and where the machines are. Current task split is in `team_workflow.md`. Phase plan and dates are in `project_phases.md`.
+Dated record of what we tried, what we decided, and where the machines are. Current task split is in `team_workflow.md`. The flow is in `project_flow.md`.
 
 ## Where we are
 
@@ -17,7 +17,7 @@ the later host, after this submission. The HPC login-node A40 is not the plan: I
 
 Isaac Sim stays at 4.5.0 (`nvcr.io/nvidia/isaac-sim:4.5.0`). On the login node the driver is 560.35.03, and Isaac 5.x fails on that driver. The pod still needs its own `nvidia-smi` (driver, CUDA, memory) written into this file before anything is installed on it. Install 4.5.0 unless that driver reading says otherwise. Do not install Isaac 5.x on driver 560.
 
-Dataset and model tracks are done under `phase1/`. Simulator setup and the first rollout
+Dataset and model tracks are done under `flow/`. Simulator setup and the first rollout
 are next, once a pod is free. Both have runbooks.
 
 ## Decisions
@@ -110,7 +110,7 @@ That client speaks the older native protocol (`isaacsim.exp.full.old_streaming.k
 
 ### 7. Dataset and model, laptop (Oct 26)
 
-Both done on an M-series Mac, no GPU, no simulator. Writeups are under `phase1/`.
+Both done on an M-series Mac, no GPU, no simulator. Writeups are under `flow/`.
 
 Dataset, 7/7. 60 episodes, 36,293 frames, 30 fps, SO-101, action and state `[6]` in our
 joint order, front and wrist at 480×640. Task string: `Grab orange and place into plate`.
@@ -148,7 +148,7 @@ is within 10 cm of the plate, which is the per-orange piece of that check.
 
 A shorter smoke run (one 30 s pretrained episode) also timed out at 0/1. Both floors
 are 0%. That is the score the HPC fine-tune has to beat. Rows are in
-`phase1/04_rollout/report/rollout_results.csv`.
+`flow/04_rollout/report/rollout_results.csv`.
 
 Policy inference runs headless against a local gRPC policy server
 (`start_policy_server.py`, lerobot 0.4.2 async inference). LeIsaac 0.4.0's client
@@ -158,7 +158,7 @@ and sets `must_go` so the server does not drop near-zero pretrained actions as
 
 ## Next, on the RunPod A40
 
-Full step-by-step is in `phase1/03_sim_setup/RUNBOOK.md`. In short:
+Full step-by-step is in `flow/03_sim_setup/RUNBOOK.md`. In short:
 
 1. Rotate the NGC key before the image pull.
 2. Create the pod: A40, Secure Cloud, container image set directly to
@@ -169,6 +169,6 @@ Full step-by-step is in `phase1/03_sim_setup/RUNBOOK.md`. In short:
 5. Install from source: Python 3.10, Isaac Lab v2.1.1, CUDA 11.8, PyTorch 2.5.1.
 6. Write the LeRobot version into this file.
 7. Load `LeIsaac-SO101-PickOrange-v0` headless with `--enable_cameras` and save a front and
-   a wrist frame to `phase1/03_sim_setup/report/`.
+   a wrist frame to `flow/03_sim_setup/report/`.
 
-Then `phase1/04_rollout/RUNBOOK.md`.
+Then `flow/04_rollout/RUNBOOK.md`.

@@ -1,0 +1,7 @@
+policy,episode,seed,grasped,placed,oranges_in_plate,task_complete,gripper_min_deg,gripper_max_deg,steps,termination,video
+random,1,1000,0,0,0,0,-8.02,99.52,3599,time_out,/home/cmpe/Desktop/DMRC/videos/baseline/random/seed1000_ep01.mp4
+random,2,1000,0,0,0,0,-30.33,120.28,3599,time_out,/home/cmpe/Desktop/DMRC/videos/baseline/random/seed1000_ep02.mp4
+random,3,1000,0,0,0,0,-16.54,99.88,3599,time_out,/home/cmpe/Desktop/DMRC/videos/baseline/random/seed1000_ep03.mp4
+pretrained,1,1000,0,0,0,0,-10.0,0.0,3599,time_out,/home/cmpe/Desktop/DMRC/videos/baseline/pretrained/seed1000_ep01.mp4
+pretrained,2,1000,0,0,0,0,-10.0,0.0,3599,time_out,/home/cmpe/Desktop/DMRC/videos/baseline/pretrained/seed1000_ep02.mp4
+pretrained,3,1000,0,0,0,0,-10.0,0.0,3599,time_out,/home/cmpe/Desktop/DMRC/videos/baseline/pretrained/seed1000_ep03.mp4

@@ -7,7 +7,7 @@ dataset's joint order.
 
 Needs no simulator and no CUDA GPU.
 
-    python phase1/02_model_exploration/contract_test.py
+    python flow/02_model_exploration/contract_test.py
 """
 
 import argparse
@@ -84,7 +84,7 @@ def main() -> None:
     parser.add_argument("--frame", type=int, default=200)
     parser.add_argument("--device", default="auto")
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--out", default="phase1/02_model_exploration/report")
+    parser.add_argument("--out", default="flow/02_model_exploration/report")
     args = parser.parse_args()
 
     out = Path(args.out)

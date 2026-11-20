@@ -6,7 +6,7 @@ summarises the 60 episodes, and saves camera stills and action plots into report
 
 Runs on CPU. No simulator and no GPU needed.
 
-    python phase1/01_dataset_exploration/explore_dataset.py
+    python flow/01_dataset_exploration/explore_dataset.py
 """
 
 import argparse
@@ -300,7 +300,7 @@ def write_report(out: Path, info, episodes, tasks, checks, stats, figures) -> Pa
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", default="data/leisaac-pick-orange")
-    parser.add_argument("--out", default="phase1/01_dataset_exploration/report")
+    parser.add_argument("--out", default="flow/01_dataset_exploration/report")
     parser.add_argument("--episodes", type=int, nargs="+", default=[0, 1, 30])
     parser.add_argument("--skip-download", action="store_true")
     args = parser.parse_args()
