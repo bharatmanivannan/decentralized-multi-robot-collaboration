@@ -15,12 +15,13 @@ venv/
 *.pem
 *.key
 
-# Large artifacts. Raw datasets, weights and rollout video stay out of git.
-# Small stills, logs, CSVs and reports under phase*/ are committed on purpose.
+# Large artifacts. Raw datasets and weights stay out of git.
+# The proof clips under videos/ are committed. Other mp4s are not.
 data/
 checkpoints/
 wandb/
 *.mp4
+!videos/**/*.mp4
 *.safetensors
 *.ckpt
 *.pt

@@ -15,4 +15,4 @@ Seed 1000, three episodes, 60 seconds, headless. Grasp, place, and task completi
 
 The per-episode rows are in `flow/04_rollout/report/eval_metrics.csv`.
 
-The mp4 files stay on the lab machine. They are too big for git.
+These mp4s are in the repo. They are the clips to show.
